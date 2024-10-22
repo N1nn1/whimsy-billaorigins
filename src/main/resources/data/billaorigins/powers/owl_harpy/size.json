@@ -1,0 +1,107 @@
+{
+  "type": "origins:action_on_callback",
+  "name": "Size",
+  "description": "Debug: loaded",
+  "hidden": true,
+  "execute_chosen_when_orb": true,
+  "entity_action_lost": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:eye_height 0.6 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:hitbox_height 0.65 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:flight 0.5 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:falling 0 @s"
+      }
+    ]
+  },
+  "entity_action_respawned": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:eye_height 0.6 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:hitbox_height 0.65 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:flight 0.5 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:falling 0 @s"
+      }
+    ]
+  },
+  "entity_action_chosen": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:eye_height 0.6 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:hitbox_height 0.65 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:flight 0.5 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:falling 0 @s"
+      }
+    ]
+  },
+  "entity_action_added": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:eye_height 0.6 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:hitbox_height 0.65 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:flight 0.5 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:falling 0 @s"
+      }
+    ]
+  }
+}

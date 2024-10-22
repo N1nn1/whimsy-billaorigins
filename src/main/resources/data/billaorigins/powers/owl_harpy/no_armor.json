@@ -1,0 +1,19 @@
+{
+  "type": "origins:conditioned_restrict_armor",
+  "chest": {
+    "type": "origins:armor_value",
+    "comparison": ">",
+    "compare_to": 0
+  },
+  "legs": {
+    "type": "origins:armor_value",
+    "comparison": ">",
+    "compare_to": 0
+  },
+  "feet": {
+    "type": "origins:armor_value",
+    "comparison": ">",
+    "compare_to": 0
+  },
+  "tick_rate": 20
+}

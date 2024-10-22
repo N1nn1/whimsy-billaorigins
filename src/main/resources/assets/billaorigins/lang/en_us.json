@@ -1,0 +1,24 @@
+{
+  "origin.billaorigins.wattoian.name": "Wattoian",
+  "origin.billaorigins.wattoian.description": "*zae voice* eyyy watto",
+
+  "power.billaorigins.wattoian/sink_boats.name": "Sinks Boats",
+  "power.billaorigins.wattoian/sink_boats.description": "",
+  "power.billaorigins.wattoian/kill_mount.name": "Kills Mounts",
+  "power.billaorigins.wattoian/kill_mount.description": "",
+  "power.billaorigins.wattoian/no_armor.name": "No Armor",
+  "power.billaorigins.wattoian/no_armor.description": "",
+  "power.billaorigins.wattoian/deplete_hunger.name": "Deplete Hunger",
+  "power.billaorigins.wattoian/deplete_hunger.description": "",
+  "power.billaorigins.wattoian/increased_kb_resistance.name": "Knockback Resistance",
+  "power.billaorigins.wattoian/increased_kb_resistance.description": "",
+  "power.billaorigins.wattoian/increased_health.name": "2x Health",
+  "power.billaorigins.wattoian/increased_health.description": "",
+  "power.billaorigins.wattoian/increased_swim_speed.name": "Inceased Swim Speed",
+  "power.billaorigins.wattoian/increased_swim_speed.description": "",
+  "power.billaorigins.wattoian/freeze_resistance.name": "Freezing Resistance",
+  "power.billaorigins.wattoian/freeze_resistance.description": "",
+
+
+  "origin.billaorigins.owl_harpy.name": "Owl Harpy"
+}

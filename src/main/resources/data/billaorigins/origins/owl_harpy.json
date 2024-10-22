@@ -1,0 +1,15 @@
+{
+  "powers": [
+    "billaorigins:owl_harpy/size",
+    "billaorigins:owl_harpy/decreased_health",
+    "billaorigins:owl_harpy/owl_vision",
+    "billaorigins:owl_harpy/flight",
+    "billaorigins:owl_harpy/passive_descending",
+    "billaorigins:owl_harpy/no_armor"
+  ],
+  "icon": {
+    "item": "minecraft:feather"
+  },
+  "order": 1,
+  "impact": 1
+}
