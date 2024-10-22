@@ -1,3 +1,4 @@
 {
-  "type": "billaorigins:kill_mount"
+  "type": "billaorigins:kill_mount",
+  "hidden": true
 }

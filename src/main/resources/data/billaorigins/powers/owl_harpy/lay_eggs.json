@@ -1,0 +1,21 @@
+{
+  "type": "apoli:action_on_wake_up",
+  "block_action": "apoli:nothing",
+  "block_condition": "apoli:allow",
+  "entity_action": {
+    "type": "apoli:and",
+    "actions": [
+      {
+        "type": "apoli:give",
+        "item_action": "apoli:nothing",
+        "stack": {
+          "item": "billaorigins:harpyegg"
+        }
+      },
+      {
+        "type": "apoli:play_sound",
+        "sound": "minecraft:entity.chicken.egg"
+      }
+    ]
+  }
+}

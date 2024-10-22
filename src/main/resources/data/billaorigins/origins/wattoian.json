@@ -1,14 +1,14 @@
 {
   "powers": [
     "billaorigins:wattoian/size",
+    "billaorigins:wattoian/no_armor",
     "billaorigins:wattoian/sink_boats",
     "billaorigins:wattoian/kill_mount",
-    "billaorigins:wattoian/increased_swim_speed",
+    "billaorigins:wattoian/deplete_hunger",
     "billaorigins:wattoian/increased_health",
     "billaorigins:wattoian/increased_kb_resistance",
+    "billaorigins:wattoian/increased_swim_speed",
     "billaorigins:wattoian/freeze_resistance",
-    "billaorigins:wattoian/no_armor",
-    "billaorigins:wattoian/deplete_hunger",
     "origins:aqua_affinity",
     "origins:aquatic"
   ],
@@ -16,5 +16,5 @@
     "item": "minecraft:ink_sac"
   },
   "order": 1,
-  "impact": 1
+  "impact": 3
 }

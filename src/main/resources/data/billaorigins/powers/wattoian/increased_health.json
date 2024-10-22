@@ -1,5 +1,6 @@
 {
   "type": "origins:attribute",
+  "hidden": true,
   "modifier": {
     "name": "Max health increase",
     "attribute": "minecraft:generic.max_health",
