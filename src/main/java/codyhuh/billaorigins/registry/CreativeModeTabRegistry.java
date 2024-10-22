@@ -18,6 +18,7 @@ public class CreativeModeTabRegistry {
             .title(Component.translatable("itemGroup.billaorigins"))
             .displayItems((itemDisplayParameters, output) -> {
                 ItemRegistry.ITEMS.getEntries().forEach(itemRegistryObject ->  {
+                    output.accept(itemRegistryObject.get());
                 });
             })
             .build());
