@@ -18,9 +18,9 @@ public class FlightPower extends PowerFactory<NoConfiguration> {
         if (!entity.level().isClientSide) {
             boolean isActive = configuration.isActive(entity);
             boolean hasAbility = this.hasAbility(entity);
-            if (isActive && !hasAbility) {
+            if (isActive && !hasAbility && !entity.isInWaterRainOrBubble()) {
                 this.grantAbility(entity);
-            } else if (!isActive && hasAbility) {
+            } else if ((!isActive && hasAbility) || (entity.isInWaterRainOrBubble())) {
                 this.revokeAbility(entity);
             }
         }
