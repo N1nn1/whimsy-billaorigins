@@ -21,5 +21,9 @@
 
 
   "origin.billaorigins.owl_harpy.name": "Owl Harpy",
-  "item.billaorigins.harpy_egg": "Harpy Egg"
+  "item.billaorigins.harpy_egg": "Harpy Egg",
+  "item.billaorigins.harpy_egg_custard_tart": "Harpy Egg Custard Tart",
+  "item.billaorigins.harpy_eggs_benedict": "Harpy Eggs Benedict",
+  "item.billaorigins.harpy_omelette": "Harpy Omelette",
+  "block.billaorigins.harpy_pavlova": "Harpy Egg Pavlova"
 }

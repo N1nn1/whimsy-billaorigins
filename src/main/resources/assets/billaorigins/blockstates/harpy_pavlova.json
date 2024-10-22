@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "bites=0": {
+      "model": "billaorigins:block/harpy_pavlova0"
+    },
+    "bites=1": {
+      "model": "billaorigins:block/harpy_pavlova1"
+    },
+    "bites=2": {
+      "model": "billaorigins:block/harpy_pavlova2"
+    }
+  }
+}

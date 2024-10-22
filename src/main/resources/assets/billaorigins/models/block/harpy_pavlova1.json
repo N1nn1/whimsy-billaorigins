@@ -1,0 +1,38 @@
+{
+	"textures": {
+		"2": "billaorigins:block/harpy_pavlova",
+		"3": "billaorigins:block/harpy_pavlova1",
+		"4": "billaorigins:block/harpy_pavlova2",
+		"5": "billaorigins:block/harpy_pavlova_bottom",
+		"6": "billaorigins:block/harpy_pavlova_top1",
+		"particle": "billaorigins:block/harpy_pavlova_inside"
+	},
+	"elements": [
+		{
+			"from": [1, 0, 1],
+			"to": [15, 5, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 1]},
+			"faces": {
+				"north": {"uv": [1, 11, 15, 16], "texture": "#2"},
+				"east": {"uv": [1, 11, 15, 16], "texture": "#3"},
+				"south": {"uv": [1, 11, 15, 16], "texture": "#4"},
+				"west": {"uv": [1, 11, 15, 16], "texture": "#4"},
+				"up": {"uv": [1, 1, 15, 15], "texture": "#6"},
+				"down": {"uv": [1, 1, 15, 15], "texture": "#5"}
+			}
+		},
+		{
+			"from": [3, 5, 3],
+			"to": [13, 7, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 5, 1]},
+			"faces": {
+				"north": {"uv": [13, 9, 3, 11], "texture": "#2"},
+				"east": {"uv": [3, 9, 13, 11], "texture": "#3"},
+				"south": {"uv": [3, 9, 13, 11], "texture": "#3"},
+				"west": {"uv": [3, 9, 13, 11], "texture": "#2"},
+				"up": {"uv": [3, 3, 13, 13], "texture": "#6"},
+				"down": {"uv": [3, 9, 13, 11], "texture": "#missing"}
+			}
+		}
+	]
+}
