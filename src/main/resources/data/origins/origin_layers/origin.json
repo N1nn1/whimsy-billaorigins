@@ -1,5 +1,5 @@
 {
-    "replace": false,
+    "replace": true,
     "origins": [
         "billaorigins:wattoian",
         "billaorigins:owl_harpy"
