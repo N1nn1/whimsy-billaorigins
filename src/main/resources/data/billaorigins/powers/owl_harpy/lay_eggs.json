@@ -9,7 +9,7 @@
         "type": "apoli:give",
         "item_action": "apoli:nothing",
         "stack": {
-          "item": "billaorigins:harpyegg"
+          "item": "billaorigins:harpy_egg"
         }
       },
       {

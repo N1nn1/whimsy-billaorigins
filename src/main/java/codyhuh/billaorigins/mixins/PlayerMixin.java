@@ -2,6 +2,7 @@ package codyhuh.billaorigins.mixins;
 
 import codyhuh.billaorigins.registry.PowerRegistry;
 import io.github.edwinmindcraft.apoli.api.component.IPowerContainer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.effect.MobEffects;
@@ -30,33 +31,38 @@ public abstract class PlayerMixin extends LivingEntity {
         super(entityType, level);
     }
 
-    @Inject(method = "getDestroySpeed", at = @At("HEAD"), cancellable = true)
-    public void harpyDestroySpeed(BlockState blockState, CallbackInfoReturnable<Float> cir) {
+    @Inject(method = "getDigSpeed", at = @At("HEAD"), cancellable = true)
+    public void harpyDigSpeed(BlockState blockState, BlockPos pos, CallbackInfoReturnable<Float> cir) {
         if (IPowerContainer.hasPower(this, PowerRegistry.FLIGHT_POWER.get())) {
-            cir.cancel();
             float f = this.inventory.getDestroySpeed(blockState);
-            if (f > 1.0f) {
+            if (f > 1.0F) {
                 int i = EnchantmentHelper.getBlockEfficiency(this);
-                ItemStack itemStack = this.getMainHandItem();
-                if (i > 0 && !itemStack.isEmpty()) {
-                    f += (float) (i * i + 1);
+                ItemStack itemstack = this.getMainHandItem();
+                if (i > 0 && !itemstack.isEmpty()) {
+                    f += (float)(i * i + 1);
                 }
             }
+
             if (MobEffectUtil.hasDigSpeed(this)) {
-                f *= 1.0f + (float) (MobEffectUtil.getDigSpeedAmplification(this) + 1) * 0.2f;
+                f *= 1.0F + (float)(MobEffectUtil.getDigSpeedAmplification(this) + 1) * 0.2F;
             }
+
             if (this.hasEffect(MobEffects.DIG_SLOWDOWN)) {
-                f *= (switch (this.getEffect(MobEffects.DIG_SLOWDOWN).getAmplifier()) {
-                    case 0 -> 0.3f;
-                    case 1 -> 0.09f;
-                    case 2 -> 0.0027f;
-                    default -> 8.1E-4f;
-                });
+                float f1 = switch (this.getEffect(MobEffects.DIG_SLOWDOWN).getAmplifier()) {
+                    case 0 -> 0.3F;
+                    case 1 -> 0.09F;
+                    case 2 -> 0.0027F;
+                    default -> 8.1E-4F;
+                };
+
+                f *= f1;
             }
+
             if (this.isEyeInFluid(FluidTags.WATER) && !EnchantmentHelper.hasAquaAffinity(this)) {
-                f /= 5.0f;
+                f /= 5.0F;
             }
             cir.setReturnValue(f);
         }
+
     }
 }

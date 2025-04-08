@@ -1,9 +1,104 @@
 {
-  "type": "origins:night_vision",
-  "strength": 0.6,
-  "condition": {
-    "type": "origins:submerged_in",
-    "fluid": "minecraft:water",
-    "inverted": true
+  "type": "apoli:multiple",
+  "night_vision": {
+    "type": "origins:night_vision",
+    "strength": 0.6,
+    "condition": {
+      "type": "apoli:and",
+      "conditions": [
+        {
+          "type": "origins:in_rain",
+          "inverted": true
+        },
+        {
+          "type": "origins:submerged_in",
+          "fluid": "minecraft:water",
+          "inverted": true
+        }
+      ]
+    }
+  },
+  "overlay": {
+    "type": "origins:overlay",
+    "texture": "minecraft:textures/misc/nausea.png",
+    "strength": 0.4,
+    "red": 0,
+    "green": 0.3,
+    "blue": 0.5,
+    "draw_mode": "nausea",
+    "draw_phase": "above_hud",
+    "hide_with_hud": false,
+    "visible_in_third_person": true,
+    "condition": {
+      "type": "apoli:and",
+      "conditions": [
+        {
+          "type": "origins:in_rain",
+          "inverted": true
+        },
+        {
+          "type": "origins:submerged_in",
+          "fluid": "minecraft:water",
+          "inverted": true
+        },
+        {
+          "type": "origins:brightness",
+          "comparison": "<=",
+          "compare_to": 0.25
+        }
+      ]
+    }
+  },
+  "overlay2": {
+    "type": "origins:overlay",
+    "texture": "minecraft:textures/block/blue_concrete.png",
+    "strength": 0.1,
+    "draw_mode": "nausea",
+    "draw_phase": "above_hud",
+    "hide_with_hud": false,
+    "visible_in_third_person": true,
+    "condition": {
+      "type": "apoli:and",
+      "conditions": [
+        {
+          "type": "origins:in_rain",
+          "inverted": true
+        },
+        {
+          "type": "origins:submerged_in",
+          "fluid": "minecraft:water",
+          "inverted": true
+        },
+        {
+          "type": "origins:brightness",
+          "comparison": "<=",
+          "compare_to": 0.1
+        }
+      ]
+    }
+  },
+  "overlay3": {
+    "type": "origins:overlay",
+    "texture": "minecraft:textures/misc/nausea.png",
+    "strength": 0.3,
+    "red": 1,
+    "green": 0,
+    "blue": 0,
+    "draw_mode": "nausea",
+    "draw_phase": "above_hud",
+    "hide_with_hud": false,
+    "visible_in_third_person": true,
+    "condition": {
+      "type": "apoli:or",
+      "conditions": [
+        {
+          "type": "origins:in_rain"
+        },
+        {
+          "type": "origins:submerged_in",
+          "fluid": "minecraft:water"
+        }
+      ]
+    }
   }
 }

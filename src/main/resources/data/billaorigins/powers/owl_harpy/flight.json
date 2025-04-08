@@ -1,3 +1,80 @@
 {
-  "type": "billaorigins:flight"
+  "type": "apoli:multiple",
+  "fly": {
+    "type": "billaorigins:flight"
+  },
+  "particles": {
+    "type": "origins:particle",
+    "particle": "minecraft:campfire_cosy_smoke",
+    "offset_y": 0.2,
+    "frequency": 4,
+    "hidden": true,
+    "spread": {
+      "x": 0.5,
+      "y": 0.15,
+      "z": 0.5
+    },
+    "condition": {
+      "type": "apoli:and",
+      "conditions": [
+        {
+          "type": "origins:creative_flying"
+        },
+        {
+          "type": "origins:sprinting"
+        }
+      ]
+    }
+  },
+  "no_shield": {
+    "type": "origins:prevent_item_use",
+    "item_condition": {
+      "type": "origins:ingredient",
+      "ingredient": {
+        "item": "minecraft:shield"
+      }
+    },
+    "condition": {
+      "type": "origins:creative_flying"
+    }
+  },
+  "what": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:play_sound",
+      "sound": "billaorigins:entity.harpy.fly"
+    },
+    "interval": 10,
+    "condition": {
+      "type": "apoli:and",
+      "conditions": [
+        {
+          "type": "origins:creative_flying"
+        },
+        {
+          "type": "origins:sprinting"
+        }
+      ]
+    }
+  },
+  "what2": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:play_sound",
+      "sound": "billaorigins:entity.harpy.fly"
+    },
+    "interval": 30,
+    "condition": {
+      "type": "apoli:and",
+      "conditions": [
+        {
+          "type": "origins:creative_flying"
+        },
+        {
+          "type": "origins:sprinting",
+          "inverted": true
+        }
+      ]
+    }
+  }
 }

@@ -1,0 +1,12 @@
+{
+	"entity.harpy.fly": {
+		"sounds": [
+			"billaorigins:entity/harpy/fly_0",
+			"billaorigins:entity/harpy/fly_1",
+			"billaorigins:entity/harpy/fly_2",
+			"billaorigins:entity/harpy/fly_3",
+			"billaorigins:entity/harpy/fly_4"
+		],
+		"subtitle": "subtitles.entity.billaorigins.harpy.fly"
+	}
+}
