@@ -35,6 +35,7 @@
   "power.billaorigins.owl_harpy/no_armor.description": "You can only equip helmets, all other armor would make you unable to take off.",
 
   "subtitles.entity.billaorigins.harpy.fly": "Harpy flies",
+  "subtitles.entity.billaorigins.harpy.takeoff": "Harpy takes off",
 
   "item.billaorigins.harpy_egg": "Harpy Egg",
   "item.billaorigins.harpy_egg_custard_tart": "Harpy Egg Custard Tart",

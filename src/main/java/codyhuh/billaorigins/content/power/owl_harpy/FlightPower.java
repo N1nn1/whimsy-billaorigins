@@ -6,7 +6,12 @@ import io.github.edwinmindcraft.apoli.api.power.factory.PowerFactory;
 import io.github.edwinmindcraft.apoli.common.ApoliCommon;
 import io.github.edwinmindcraft.calio.api.CalioAPI;
 import io.github.edwinmindcraft.calio.api.registry.PlayerAbilities;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import virtuoel.pehkui.api.ScaleData;
+import virtuoel.pehkui.api.ScaleEasings;
+import virtuoel.pehkui.api.ScaleTypes;
 
 public class FlightPower extends PowerFactory<NoConfiguration> {
     public FlightPower() {
@@ -15,13 +20,21 @@ public class FlightPower extends PowerFactory<NoConfiguration> {
     }
 
     public void tick(ConfiguredPower<NoConfiguration, ?> configuration, Entity entity) {
-        if (!entity.level().isClientSide) {
-            boolean isActive = configuration.isActive(entity);
-            boolean hasAbility = this.hasAbility(entity);
-            if (isActive && !hasAbility && !entity.isInWaterRainOrBubble()) {
-                this.grantAbility(entity);
-            } else if ((!isActive && hasAbility) || (entity.isInWaterRainOrBubble())) {
-                this.revokeAbility(entity);
+        if (entity instanceof Player player) {
+            ScaleData scaleData = ScaleTypes.THIRD_PERSON.getScaleData(entity);
+            scaleData.setEasing(ScaleEasings.LINEAR);
+
+            float scale = player.getAbilities().flying ? player.isSprinting() ? 1.75F : 1F : 0.7F;
+            boolean b = scaleData.getScale() == 1.75F || scaleData.getScale() == 1F || scaleData.getScale() == 0.7F;
+
+            if (scaleData.getScale() != scale && b) scaleData.setTargetScale(scale);
+
+            if (player.level() instanceof ServerLevel) {
+
+                boolean isActive = configuration.isActive(player);
+                boolean hasAbility = this.hasAbility(player);
+                if (isActive && !hasAbility && !player.isInWaterRainOrBubble()) this.grantAbility(player);
+                else if ((!isActive && hasAbility) || (player.isInWaterRainOrBubble())) this.revokeAbility(player);
             }
         }
 

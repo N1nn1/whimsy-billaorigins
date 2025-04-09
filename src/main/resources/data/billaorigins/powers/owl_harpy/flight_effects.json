@@ -1,0 +1,18 @@
+{
+  "type": "apoli:multiple",
+  "overlay": {
+    "type": "origins:overlay",
+    "texture": "minecraft:textures/misc/nausea.png",
+    "strength": 0.3,
+    "red": 0.6,
+    "green": 0.9,
+    "blue": 1,
+    "draw_mode": "nausea",
+    "draw_phase": "above_hud",
+    "hide_with_hud": false,
+    "visible_in_third_person": true,
+    "condition": {
+      "type": "origins:creative_flying"
+    }
+  }
+}

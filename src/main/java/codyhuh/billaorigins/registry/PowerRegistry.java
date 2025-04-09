@@ -17,4 +17,5 @@ public class PowerRegistry {
     public static final RegistryObject<SinkBoatPower> SINK_BOAT_POWER = POWERS.register("sink_boat", SinkBoatPower::new);
     public static final RegistryObject<MountDeathPower> KILL_MOUNT_POWER = POWERS.register("kill_mount", MountDeathPower::new);
     public static final RegistryObject<FreezeResistancePower> FREEZE_RESISTANCE = POWERS.register("freeze_resistance", FreezeResistancePower::new);
+    public static final RegistryObject<FreezeResistancePower> WATER_BREATHING = POWERS.register("water_breathing", FreezeResistancePower::new);
 }

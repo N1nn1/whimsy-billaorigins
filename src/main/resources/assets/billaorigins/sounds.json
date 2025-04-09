@@ -8,5 +8,16 @@
 			"billaorigins:entity/harpy/fly_4"
 		],
 		"subtitle": "subtitles.entity.billaorigins.harpy.fly"
+	},
+	"entity.harpy.fly.loop": {
+		"sounds": [
+			"billaorigins:entity/harpy/fly_loop"
+		]
+	},
+	"entity.harpy.fly.takeoff": {
+		"sounds": [
+			"billaorigins:entity/harpy/takeoff"
+		],
+		"subtitle": "subtitles.entity.billaorigins.harpy.takeoff"
 	}
 }

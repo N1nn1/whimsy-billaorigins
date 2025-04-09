@@ -9,8 +9,7 @@
     "billaorigins:wattoian/increased_kb_resistance",
     "billaorigins:wattoian/increased_swim_speed",
     "billaorigins:wattoian/freeze_resistance",
-    "origins:aqua_affinity",
-    "origins:aquatic"
+    "origins:aqua_affinity"
   ],
   "icon": {
     "item": "minecraft:ink_sac"
