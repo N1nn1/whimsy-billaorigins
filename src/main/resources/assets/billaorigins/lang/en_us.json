@@ -41,5 +41,11 @@
   "item.billaorigins.harpy_egg_custard_tart": "Harpy Egg Custard Tart",
   "item.billaorigins.harpy_eggs_benedict": "Harpy Eggs Benedict",
   "item.billaorigins.harpy_omelette": "Harpy Omelette",
-  "block.billaorigins.harpy_pavlova": "Harpy Egg Pavlova"
+  "block.billaorigins.harpy_pavlova": "Harpy Egg Pavlova",
+
+  "origin.billaorigins.flashlight_breacher.name": "Flashlight Breacher",
+  "origin.billaorigins.flashlight_breacher.description": "fishd",
+
+  "item.billaorigins.flashlight_breacher": "Flashlight Breacher",
+  "item.billaorigins.flashlight_breacher_bucket": "Flashlight Breacher Bucket"
 }

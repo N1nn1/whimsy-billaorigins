@@ -150,7 +150,6 @@ dependencies {
     implementation fg.deobf("io.github.edwinmindcraft:apoli-forge:1.20.1-2.9.0.8")
     implementation fg.deobf("io.github.edwinmindcraft:origins-forge:1.20.1-1.10.0.9")
     implementation fg.deobf("curse.maven:pehkui-319596:5393101")
-    implementation fg.deobf("curse.maven:figura-901503:5151772")
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
     implementation fg.deobf("curse.maven:caelus-308989:5281700")

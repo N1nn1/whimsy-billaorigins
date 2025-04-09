@@ -6,7 +6,8 @@
   "refmap": "billaorgins.refmap.json",
   "mixins": [
     "LivingEntityMixin",
-    "PlayerMixin"
+    "PlayerMixin",
+    "SlotMixin"
   ],
   "client": [
     "client.LocalPlayerMixin"

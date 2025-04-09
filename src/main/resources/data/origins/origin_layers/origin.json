@@ -2,6 +2,7 @@
     "replace": true,
     "origins": [
         "billaorigins:wattoian",
-        "billaorigins:owl_harpy"
+        "billaorigins:owl_harpy",
+        "billaorigins:flashlight_breacher"
     ]
 }

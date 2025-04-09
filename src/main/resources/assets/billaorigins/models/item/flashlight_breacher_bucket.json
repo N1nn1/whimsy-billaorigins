@@ -1,0 +1,30 @@
+{
+  "loader": "forge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "billaorigins:item/big_generated",
+    "textures": {
+      "layer0": "billaorigins:item/flashlight_breacher_bucket_hand"
+    }
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "minecraft:item/generated",
+      "textures": {
+        "layer0": "billaorigins:item/flashlight_breacher_bucket"
+      }
+    },
+    "ground": {
+      "parent": "minecraft:item/generated",
+      "textures": {
+        "layer0": "billaorigins:item/flashlight_breacher_bucket"
+      }
+    },
+    "fixed": {
+      "parent": "minecraft:item/generated",
+      "textures": {
+        "layer0": "billaorigins:item/flashlight_breacher_bucket"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "powers": [
+    "billaorigins:flashlight_breacher/swimming",
+    "billaorigins:flashlight_breacher/bucketable",
+    "billaorigins:flashlight_breacher/size",
+    "origins:water_breathing",
+    "origins:aqua_affinity",
+    "origins:like_water",
+    "origins:aquatic",
+    "origins:conduit_power_on_land",
+    "origins:air_from_potions"
+  ],
+  "icon": {
+    "item": "minecraft:glow_ink_sac"
+  },
+  "order": 1,
+  "impact": 3
+}

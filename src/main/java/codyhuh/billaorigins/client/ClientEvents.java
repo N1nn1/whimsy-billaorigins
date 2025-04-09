@@ -8,14 +8,19 @@ import codyhuh.billaorigins.registry.ParticleTypeRegistry;
 import codyhuh.billaorigins.registry.PowerRegistry;
 import io.github.edwinmindcraft.apoli.api.component.IPowerContainer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.client.event.ViewportEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
 
 @Mod.EventBusSubscriber(modid = BillaOrigins.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEvents {
@@ -29,6 +34,7 @@ public class ClientEvents {
     public static class ForgeEvents {
         private static boolean wasFlying = false;
         private static HarpyFlightSound currentFlightSound = null;
+
 
         @SubscribeEvent
         public static void onClientTick(TickEvent.ClientTickEvent event) {

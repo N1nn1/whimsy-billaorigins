@@ -1,0 +1,104 @@
+{
+  "type": "origins:action_on_callback",
+  "execute_chosen_when_orb": true,
+  "entity_action_lost": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale reset @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:motion 2 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:step_height 0.7 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:jump_height 0.7 @s"
+      }
+    ]
+  },
+  "entity_action_respawned": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale reset @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:motion 2 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:step_height 0.7 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:jump_height 0.7 @s"
+      }
+    ]
+  },
+  "entity_action_chosen": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale reset @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:motion 2 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:step_height 0.7 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:jump_height 0.7 @s"
+      }
+    ]
+  },
+  "entity_action_added": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale reset @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:motion 2 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:step_height 0.7 @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "permission_level": 4,
+        "command": "/scale set pehkui:jump_height 0.7 @s"
+      }
+    ]
+  }
+}

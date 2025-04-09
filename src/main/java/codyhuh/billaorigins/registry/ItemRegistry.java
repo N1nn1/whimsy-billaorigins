@@ -1,6 +1,7 @@
 package codyhuh.billaorigins.registry;
 
 import codyhuh.billaorigins.BillaOrigins;
+import codyhuh.billaorigins.content.item.FlashlightBreacherBucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -15,4 +16,6 @@ public class ItemRegistry {
     public static final RegistryObject<Item> HARPY_OMELETTE = ITEMS.register("harpy_omelette", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> HARPY_PAVLOVA = ITEMS.register("harpy_pavlova", () -> new Item(new Item.Properties().stacksTo(1)));
 
+    public static final RegistryObject<Item> FLASHLIGHT_BREACHER = ITEMS.register("flashlight_breacher", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FLASHLIGHT_BREACHER_BUCKET = ITEMS.register("flashlight_breacher_bucket", () -> new FlashlightBreacherBucketItem(new Item.Properties().stacksTo(1)));
 }
