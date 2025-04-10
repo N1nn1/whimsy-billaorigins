@@ -10,7 +10,6 @@ import net.minecraft.world.level.material.Fluids;
 
 import javax.annotation.Nullable;
 
-import static codyhuh.billaorigins.content.PlayerAccess.isBucketWithPlayer;
 
 public class FlashlightBreacherBucketItem extends BucketItem {
     public FlashlightBreacherBucketItem(Properties properties) {
@@ -19,9 +18,7 @@ public class FlashlightBreacherBucketItem extends BucketItem {
 
     @Override
     public void checkExtraContent(@Nullable Player player, Level level, ItemStack stack, BlockPos pos) {
-        if (isBucketWithPlayer(stack)) {
-            PlayerAccess.releaseBucketedPlayer(level.getPlayerByUUID(stack.getTag().getUUID("BucketedPlayer")), player, pos.getCenter());
-        }
+        PlayerAccess.releaseBucketedPlayer(level.getPlayerByUUID(stack.getTag().getUUID("BucketedPlayer")), player, pos.getCenter());
     }
 
     public boolean canFitInsideContainerItems() {

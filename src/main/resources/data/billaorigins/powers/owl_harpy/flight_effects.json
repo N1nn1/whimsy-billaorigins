@@ -1,5 +1,6 @@
 {
   "type": "apoli:multiple",
+  "hidden": true,
   "overlay": {
     "type": "origins:overlay",
     "texture": "minecraft:textures/misc/nausea.png",

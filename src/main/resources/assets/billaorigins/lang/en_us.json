@@ -12,8 +12,8 @@
   "power.billaorigins.wattoian/sink_boats.description": "You're size makes you take more fall damage, as well as killing mounts and sinking boats.",
   "power.billaorigins.wattoian/deplete_hunger.name": "Big belly",
   "power.billaorigins.wattoian/deplete_hunger.description": "You're hunger depletes faster",
-  "power.billaorigins.wattoian/increased_swim_speed.name": "Inceased Swim Speed",
-  "power.billaorigins.wattoian/increased_swim_speed.description": "You're slightly faster in water",
+  "power.billaorigins.wattoian/water_breathing.name": "Amphibious",
+  "power.billaorigins.wattoian/water_breathing.description": "You can breathe underwater",
   "power.billaorigins.wattoian/freeze_resistance.name": "Freezing Resistance",
   "power.billaorigins.wattoian/freeze_resistance.description": "Your blubber keeps you safe from the cold",
 
@@ -27,12 +27,12 @@
   "power.billaorigins.owl_harpy/decreased_health.description": "You only have 6 Hearts.",
   "power.billaorigins.owl_harpy/owl_vision.name": "Nocturnal",
   "power.billaorigins.owl_harpy/owl_vision.description": "You can see in the dark.",
-  "power.billaorigins.owl_harpy/flight.name": "Winged",
-  "power.billaorigins.owl_harpy/flight.description": "You have wings and sure know how to use them.",
+  "power.billaorigins.owl_harpy/flight.name": "Owl wings",
+  "power.billaorigins.owl_harpy/flight.description": "You can fly when not exposed to water",
   "power.billaorigins.owl_harpy/lay_eggs.name": "Oviparous",
   "power.billaorigins.owl_harpy/lay_eggs.description": "Whenever you wake up in the morning, you will lay an Harpy Egg.",
   "power.billaorigins.owl_harpy/no_armor.name": "Light",
-  "power.billaorigins.owl_harpy/no_armor.description": "You can only equip helmets, all other armor would make you unable to take off.",
+  "power.billaorigins.owl_harpy/no_armor.description": "You can only equip helmets and chestplates, all other armor would make you unable to take off.",
 
   "subtitles.entity.billaorigins.harpy.fly": "Harpy flies",
   "subtitles.entity.billaorigins.harpy.takeoff": "Harpy takes off",
@@ -45,6 +45,13 @@
 
   "origin.billaorigins.flashlight_breacher.name": "Flashlight Breacher",
   "origin.billaorigins.flashlight_breacher.description": "fishd",
+
+  "power.billaorigins.flashlight_breacher/size.name": "\"Small\" Fry",
+  "power.billaorigins.flashlight_breacher/size.description": "You're 3 blocks tall, but you become less than 1 block tall in water and when crouching.",
+  "power.billaorigins.flashlight_breacher/bucketable.name": "Bucketable",
+  "power.billaorigins.flashlight_breacher/bucketable.description": "Players can carry you around in a bucket.",
+  "power.billaorigins.flashlight_breacher/swimming.name": "Flippers",
+  "power.billaorigins.flashlight_breacher/swimming.description": "You're way faster both on land and in water.",
 
   "item.billaorigins.flashlight_breacher": "Flashlight Breacher",
   "item.billaorigins.flashlight_breacher_bucket": "Flashlight Breacher Bucket"

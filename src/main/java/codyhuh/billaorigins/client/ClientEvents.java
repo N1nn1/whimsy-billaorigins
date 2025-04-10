@@ -10,8 +10,9 @@ import io.github.edwinmindcraft.apoli.api.component.IPowerContainer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -35,6 +36,12 @@ public class ClientEvents {
         private static boolean wasFlying = false;
         private static HarpyFlightSound currentFlightSound = null;
 
+        @SubscribeEvent
+        public static void livingEntityRenderer(RenderLivingEvent<LivingEntity, EntityModel<LivingEntity>> event) {
+            if (event.getEntity() instanceof PlayerAccess access && access.getBucketOwner() != null) {
+                event.setCanceled(true);
+            }
+        }
 
         @SubscribeEvent
         public static void onClientTick(TickEvent.ClientTickEvent event) {
@@ -63,19 +70,15 @@ public class ClientEvents {
         @SubscribeEvent
         public static void cameraOverlay(ViewportEvent.ComputeCameraAngles event) {
             Minecraft mc = Minecraft.getInstance();
-            var player = mc.player;
+            Player player = mc.player;
 
             if (player instanceof PlayerAccess access) {
                 float pt = (float) event.getPartialTick();
 
                 float progress = Mth.lerp(pt, access.getLastCameraFlightProgress(), access.getCameraFlightProgress());
                 if (progress > 0f) {
-                    float pitchFactor = mc.options.getCameraType().isFirstPerson() ? 0.5F : 0.1F;
-                    float basePitch = Mth.lerp(pt, player.xRotO, player.getXRot());
-                    float smoothedPitch = event.getPitch() + basePitch * pitchFactor * progress;
-                    event.setPitch(smoothedPitch);
-
                     float rollFactor = mc.options.getCameraType().isFirstPerson() ? 0.5F : 1.25F;
+                    if (player.isUnderWater()) rollFactor *= 0.5F;
                     float baseRoll = Mth.lerp(pt, access.getZRot0(), access.getZRot()) * progress;
                     float smoothedRoll = event.getRoll() + baseRoll * rollFactor * progress;
                     event.setRoll(smoothedRoll);

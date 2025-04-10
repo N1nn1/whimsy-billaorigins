@@ -1,6 +1,6 @@
 {
   "type": "apoli:multiple",
-  "swimming": {
+  "bucketable": {
     "type": "billaorigins:bucketable"
   }
 }

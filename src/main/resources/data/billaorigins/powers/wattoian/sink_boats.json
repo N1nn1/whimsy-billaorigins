@@ -1,13 +1,3 @@
 {
-  "type": "apoli:multiple",
-  "boats": {
-    "type": "billaorigins:sink_boat"
-  },
-  "texture": {
-    "type": "origins:status_bar_texture",
-    "texture": "billaorigins:textures/gui/rounga.png"
-  },
-  "water_breathing": {
-    "type": "billaorigins:water_breathing"
-  }
+  "type": "billaorigins:sink_boat"
 }

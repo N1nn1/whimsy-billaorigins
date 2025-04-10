@@ -1,35 +1,18 @@
 package codyhuh.billaorigins.content;
 
 import codyhuh.billaorigins.BillaOrigins;
-import codyhuh.billaorigins.client.particles.FeatherParticle;
-import codyhuh.billaorigins.content.sound.HarpyFlightSound;
+import codyhuh.billaorigins.content.item.FlashlightBreacherBucketItem;
 import codyhuh.billaorigins.registry.ItemRegistry;
-import codyhuh.billaorigins.registry.ParticleTypeRegistry;
-import codyhuh.billaorigins.registry.PowerRegistry;
-import io.github.edwinmindcraft.apoli.api.component.IPowerContainer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
-import net.minecraftforge.client.event.ViewportEvent;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-import java.util.UUID;
-
-import static codyhuh.billaorigins.content.PlayerAccess.isBucketWithPlayer;
-import static codyhuh.billaorigins.content.PlayerAccess.releaseBucketedPlayer;
-
 
 @Mod.EventBusSubscriber(modid = BillaOrigins.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CommonEvents {
@@ -39,9 +22,33 @@ public class CommonEvents {
 
         @SubscribeEvent
         public static void onItemToss(ItemTossEvent event) {
-            if (isBucketWithPlayer(event.getEntity().getItem())) {
+            if (event.getEntity().getItem().getItem() instanceof FlashlightBreacherBucketItem) {
                 event.getEntity().setItem(Items.WATER_BUCKET.getDefaultInstance());
             }
         }
+        @SubscribeEvent
+        public static void OnDeath(LivingDropsEvent event) {
+            for (ItemEntity itemEntity : event.getDrops()) {
+                if (itemEntity.getItem().getItem() instanceof FlashlightBreacherBucketItem) {
+                    itemEntity.setItem(Items.WATER_BUCKET.getDefaultInstance());
+                }
+            }
+        }
+        @SubscribeEvent
+        public static void playerLogOff(PlayerEvent.PlayerLoggedOutEvent event) {
+            if (event.getEntity() instanceof PlayerAccess access && access.getBucketOwner() != null) {
+                Vec3 pos = access.getBucketOwner().position().add(access.getBucketOwner().getLookAngle().multiply(2,0,2)).add(0, 1.8,0);
+                PlayerAccess.releaseBucketedPlayer(event.getEntity(), access.getBucketOwner(), pos);
+            } else {
+                for (ItemStack stack : event.getEntity().getInventory().items) {
+                    if (stack.is(ItemRegistry.FLASHLIGHT_BREACHER_BUCKET.get()) && stack.hasTag() && stack.getTag().hasUUID("BucketedPlayer")) {
+                        Player bucketed = event.getEntity().level().getPlayerByUUID(stack.getTag().getUUID("BucketedPlayer"));
+                        Vec3 pos = bucketed.position().add(bucketed.getLookAngle().multiply(2,0,2)).add(0, 1.8,0);
+                        PlayerAccess.releaseBucketedPlayer(bucketed, event.getEntity(), pos);
+                    }
+                }
+            }
+        }
+
     }
 }

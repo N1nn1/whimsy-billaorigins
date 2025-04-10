@@ -1,8 +1,8 @@
 {
   "powers": [
+    "billaorigins:flashlight_breacher/size",
     "billaorigins:flashlight_breacher/swimming",
     "billaorigins:flashlight_breacher/bucketable",
-    "billaorigins:flashlight_breacher/size",
     "origins:water_breathing",
     "origins:aqua_affinity",
     "origins:like_water",

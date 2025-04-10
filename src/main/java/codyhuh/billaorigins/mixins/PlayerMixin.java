@@ -5,8 +5,6 @@ import codyhuh.billaorigins.registry.ItemRegistry;
 import codyhuh.billaorigins.registry.ParticleTypeRegistry;
 import codyhuh.billaorigins.registry.PowerRegistry;
 import io.github.edwinmindcraft.apoli.api.component.IPowerContainer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -21,9 +19,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Abilities;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -41,6 +37,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import virtuoel.pehkui.api.ScaleData;
+import virtuoel.pehkui.api.ScaleTypes;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
@@ -73,6 +71,16 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerAccess {
             ItemStack bucket = ItemRegistry.FLASHLIGHT_BREACHER_BUCKET.get().getDefaultInstance();
             bucket.getOrCreateTag().putUUID("BucketedPlayer", this.getUUID());
             bucket.setHoverName(this.getDisplayName());
+            this.noPhysics = true;
+            this.setNoGravity(true);
+            this.setInvulnerable(true);
+
+            ScaleData scaleData = ScaleTypes.HITBOX_HEIGHT.getScaleData(this);
+            scaleData.setTargetScale(0.01F);
+            ScaleData scaleData2 = ScaleTypes.HITBOX_WIDTH.getScaleData(this);
+            scaleData2.setTargetScale(0.01F);
+            ScaleData scaleData3 = ScaleTypes.EYE_HEIGHT.getScaleData(this);
+            scaleData3.setTargetScale(0.01F);
 
             player.setItemInHand(hand, bucket);
 
@@ -85,30 +93,62 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerAccess {
         return super.interact(player, hand);
     }
 
+    @Override
+    public boolean isFree(double p_20230_, double p_20231_, double p_20232_) {
+        if (this.getBucketOwner() != null) return true;
+        return super.isFree(p_20230_, p_20231_, p_20232_);
+    }
+
+    @Override
+    public boolean isPushable() {
+        return this.getBucketOwner() == null && super.isPushable();
+    }
+
+    @Override
+    protected void pushEntities() {
+        if (this.getBucketOwner() == null) {
+            super.pushEntities();
+        }
+    }
+
+    @Override
+    public boolean startRiding(Entity p_20330_) {
+        if (this.getBucketOwner() != null) return false;
+        return super.startRiding(p_20330_);
+    }
+
+    @Override
+    public boolean canBeSeenByAnyone() {
+        if (this.getBucketOwner() != null) return false;
+        return super.canBeSeenByAnyone();
+    }
+
     @Inject(method = "aiStep", at = @At("HEAD"))
     public void BO$aiStep(CallbackInfo ci) {
-        if (getBucketOwner() != null) {
-            Vec3 lookVec = getBucketOwner().getLookAngle().normalize();
-            Vec3 handPos = getBucketOwner().position().add(0, getBucketOwner().getDimensions(getBucketOwner().getPose()).height + 0.2, 0).add(lookVec.scale(0.2));
-            this.setPos(handPos);
+        Player owner = this.getBucketOwner();
+
+        if (owner != null) {
+            EntityDimensions dimensions = owner.getDimensions(owner.getPose());
+            Vec3 pos = owner.position().add(0, dimensions.height/2,0).add(owner.getLookAngle().multiply(dimensions.width/4,0,dimensions.width/4));
+            Vec3 pos2 = owner.position().add(owner.getLookAngle().multiply(2,0,2)).add(0, 1.8,0);
+
+            this.setPos(pos);
             this.setDeltaMovement(Vec3.ZERO);
             this.setAirSupply(this.getMaxAirSupply());
+
             this.noPhysics = true;
             this.setNoGravity(true);
-            this.setInvisible(true);
             this.setInvulnerable(true);
 
-            Player that = (Player) (Object) this;
-
-            if (!getBucketOwner().getMainHandItem().is(ItemRegistry.FLASHLIGHT_BREACHER_BUCKET.get()) || this.isCrouching()) {
-                PlayerAccess.releaseBucketedPlayer(that, getBucketOwner(), handPos);
+            if (!anyHandHoldsNucket(owner) || this.isShiftKeyDown()) {
+                PlayerAccess.releaseBucketedPlayer((Player)(Object)this, owner, pos2);
             }
-        } else {
-            this.noPhysics = false;
-            this.setNoGravity(false);
-            this.setInvisible(false);
-            this.setInvulnerable(false);
         }
+    }
+
+    @Unique
+    private boolean anyHandHoldsNucket(Player p) {
+        return (p.getMainHandItem().is(ItemRegistry.FLASHLIGHT_BREACHER_BUCKET.get()) && p.getMainHandItem().hasTag() && p.getMainHandItem().getTag().hasUUID("BucketedPlayer") && p.getMainHandItem().getTag().getUUID("BucketedPlayer").equals(this.getUUID())) || (p.getOffhandItem().is(ItemRegistry.FLASHLIGHT_BREACHER_BUCKET.get()) && p.getOffhandItem().hasTag() && p.getOffhandItem().getTag().hasUUID("BucketedPlayer") && p.getOffhandItem().getTag().getUUID("BucketedPlayer").equals(this.getUUID()));
     }
 
     @Inject(method = "aiStep", at = @At("TAIL"))
@@ -221,6 +261,20 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerAccess {
 
     }
 
+    @Inject(at = @At("RETURN"), method = "getDimensions", cancellable = true)
+    private void S$getDimensions(Pose pose, CallbackInfoReturnable<EntityDimensions> cir) {
+        if ((this.isUnderWater() || (!this.isUnderWater() && this.isCrouching())) && IPowerContainer.hasPower(this, PowerRegistry.SWIMMING.get())) {
+            cir.setReturnValue(EntityDimensions.scalable(0.8F, 0.8F));
+        }
+    }
+
+    @Inject(at = @At("RETURN"), method = "getStandingEyeHeight", cancellable = true)
+    private void S$getStandingEyeHeight(Pose pose, EntityDimensions dimensions, CallbackInfoReturnable<Float> cir) {
+        if ((this.isUnderWater() || (!this.isUnderWater() && this.isCrouching())) && IPowerContainer.hasPower(this, PowerRegistry.SWIMMING.get())) {
+            cir.setReturnValue(0.35F);
+        }
+    }
+
     @Inject(at = @At("TAIL"), method = "defineSynchedData")
     private void S$defineSynchedData(CallbackInfo ci) {
         this.entityData.define(DATA_BUCKET_OWNERUUID_ID, Optional.empty());
@@ -269,3 +323,4 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerAccess {
         return $$0 == null ? null : this.level().getPlayerByUUID($$0);
     }
 }
+
